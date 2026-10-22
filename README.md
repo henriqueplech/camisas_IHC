@@ -1,77 +1,73 @@
-# FieldKit — marketplace acessível de camisas
+# FieldKit — marketplace acessível de camisas de futebol
 
-Projeto de IHC de **Henrique F. V. Plech**, orientação da **Prof.ª Tacyana Batista**. Evolução da primeira etapa para dez telas interativas, mini design system e avaliação heurística.
+Projeto de **Interação Humano-Computador** desenvolvido por **Henrique F. V. Plech**, sob orientação da **Prof.ª Tacyana Batista**. O protótipo oferece uma experiência de compra de camisas com foco em acessibilidade, navegação clara e autonomia.
 
-## Executar
+[Protótipo no Figma](https://www.figma.com/design/Oe43KaqWU07EfdmDhc6ijN/IHC---HenriqueFVPlech?node-id=1-2) · [Vídeo de apresentação do projeto e da persona](https://youtu.be/6fTX0vEiDGA)
 
-Sem dependências: abra `index.html` ou use Node.js 22.16+:
+![Página inicial da FieldKit com VLibras](docs/evidencias/previa.png)
 
-```powershell
-node scripts/serve.mjs
-```
+## Como abrir
 
-Acesse [a prévia local](http://localhost:4173). Ctrl + C encerra o servidor, que escuta somente neste computador. Para hospedagem estática, use `index.html`, `style.css`, `app.js` e `docs/`.
+Abra **`index.html`** no navegador. Não é necessário instalar dependências. O VLibras precisa de internet.
 
-## Funcionalidades
+## Telas e funcionalidades
 
-- Início, catálogo, detalhes, favoritos, sacola, entrega, revisão, confirmação, acesso/perfil e ajuda.
-- Busca sem acentos, filtros por time/coleção e ordenação de preço.
-- Guia de medidas, tamanho obrigatório, favoritos e sacola persistidos.
-- Quantidades, remoção/desfazer, FIELDKIT15 (15% em titulares) e frete calculado.
-- Compra simulada como visitante, erros específicos, revisão editável e confirmação.
-- Perfil temporário, FAQ, instruções e VLibras em todas as telas.
-- Estados vazios, erro, carregamento, sucesso, hover e foco.
+O site possui **10 telas interativas**. A jornada principal é **Início → Catálogo → Detalhes → Sacola → Entrega → Revisão → Confirmação**, complementada por **Favoritos, Acesso/perfil e Ajuda e acessibilidade**.
 
-Protótipo acadêmico sem autenticação, cobrança ou entrega reais. Produtos e preços ilustrativos. Endereço e perfil ficam apenas na memória da aba; sacola, favoritos e cupom em `localStorage`, com alternativa em memória se indisponível. Limpeza disponível em Ajuda.
+- Busca sem distinção de acentos, filtros por time e coleção e ordenação de preço.
+- Guia de medidas, seleção obrigatória de tamanho e favoritos salvos no navegador.
+- Sacola com quantidades, remoção e desfazer, cupom **FIELDKIT15** e cálculo de frete.
+- Compra simulada como visitante, validação dos campos e revisão editável antes da confirmação.
+- Feedback de carregamento, sucesso, erro e estado vazio, além de hover e foco nos controles.
+- Perfil temporário, FAQ e opção de limpar os dados locais.
 
-## Entregáveis
+O menu permanece consistente entre as telas, com acesso à sacola e ao perfil. A navegação permite usar Voltar e Avançar do navegador, atualiza o título da página e direciona o foco ao conteúdo.
 
-| Documento                                 | Conteúdo                                            |
-| ----------------------------------------- | --------------------------------------------------- |
-| [Design system](docs/DESIGN-SYSTEM.md)    | Tokens, contrastes, componentes e WCAG 2.0          |
-| [Avaliação de IHC](docs/AVALIACAO-IHC.md) | Dez heurísticas, matriz, mapa e roteiro Think Aloud |
-| [Apresentação](docs/APRESENTACAO.md)      | Demonstração e justificativas                       |
-| [Verificação](docs/VERIFICACAO.md)        | Testes executados e limites                         |
+## Acessibilidade e VLibras
 
-Não houve teste com usuários reais. A alternativa escolhida é a inspeção heurística assistida por IA, identificada no relatório. O roteiro para 2–3 participantes não contém resultados fictícios.
+A implementação é orientada à **WCAG 2.0 nível AA**, com:
 
-## Verificar
+- HTML semântico, títulos organizados e link **“Pular para o conteúdo”**.
+- Navegação com **Tab e Shift + Tab**, ativação com **Enter ou Espaço** e seleção de tamanho pelas setas.
+- Foco visível, labels associados aos campos e mensagens de erro com orientação de correção.
+- Regiões de status para anunciar atualizações e estados que não dependem apenas de cor.
+- Layout responsivo, zoom permitido e respeito à preferência por movimento reduzido.
 
-```powershell
-node --check app.js
-node scripts/check.mjs
-```
+O **VLibras carrega automaticamente** e permanece disponível pelo botão global e pelo controle lateral em todas as telas. A integração utiliza o script oficial `https://vlibras.gov.br/app/vlibras-plugin.js`, informa falhas e permite tentar novamente. A tradução em Libras complementa os demais recursos de acessibilidade.
 
-Verifica telas, lógica, validação, rotas, valores em centavos e contrastes. Não comprova conformidade WCAG integral; consulte os limites no relatório.
+## Mini design system
 
-## Padrão de formatação
+Tokens e componentes são compartilhados entre as telas, com estilos definidos em `style.css`.
 
-Os arquivos usam UTF-8, indentação de dois espaços e configuração compartilhada em `.editorconfig` e `.prettierrc.json`. O HTML das telas está em templates identificados por `html`, permitindo que o formatador organize tanto a marcação quanto o JavaScript.
+| Elemento           | Padrão                                                                                                              |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------- |
+| Cores              | Azul, fundo claro, texto escuro e amarelo de destaque; pares de texto verificados acima de 4,5:1.                   |
+| Tipografia         | Inter, Arial, Helvetica ou sans-serif; corpo de 1rem e tamanhos relativos.                                          |
+| Espaçamento e grid | Escala de 4 a 64px, em rem, e colunas adaptáveis ao tamanho da tela.                                                |
+| Componentes        | Botões com área mínima de 44 × 44px, campos com label visível, cards, favoritos, seletores e mensagens de feedback. |
 
-Para conferir o padrão:
+Exemplos de contraste: **branco sobre azul `#0057B8`: 6,87:1**; **texto `#526175` sobre branco: 6,31:1**. A paleta completa e as regras dos componentes estão no [design system](docs/DESIGN-SYSTEM.md).
 
-```powershell
-npm exec --yes --package=prettier@3.9.10 -- prettier --check index.html style.css app.js "scripts/*.mjs" README.md "docs/*.md" .prettierrc.json
-```
+## Avaliação Nielsen e melhorias
 
-Troque `--check` por `--write` para aplicar a formatação. Esse comando é apenas uma ferramenta de desenvolvimento; o site continua sem dependências para executar.
+A avaliação documentada utiliza as **10 heurísticas de Nielsen**, por inspeção técnica assistida por IA. **Não houve testes com usuários reais**; o roteiro Think Aloud para 2 a 3 participantes está preparado para aplicação futura.
 
-## Estrutura
+| Problema identificado                     | Correção aplicada                                                               |
+| ----------------------------------------- | ------------------------------------------------------------------------------- |
+| Contador fixo e ações sem feedback        | Contagem real da sacola e mensagens de estado.                                  |
+| Detalhes e filtros sem interação completa | Tela de produto, guia de medidas e filtros funcionais.                          |
+| Falta de controle e prevenção de erros    | Remoção com desfazer, tamanho obrigatório, validação e revisão do pedido.       |
+| Ausência de recuperação e ajuda           | Estados vazios com ação, erros específicos, FAQ e instruções de acessibilidade. |
 
-```text
-index.html               Estrutura e navegação global
-style.css                Tokens, componentes e responsividade
-app.js                   Telas e lógica do protótipo
-scripts/serve.mjs        Servidor local
-scripts/check.mjs        Verificações reproduzíveis
-docs/                    Entregáveis acadêmicos
-```
+A [avaliação completa e matriz de iteração](docs/AVALIACAO-IHC.md) registram as dez heurísticas, severidades e formas de verificar as correções.
 
-Fluxo principal sem fontes, imagens ou bibliotecas externas. Ilustrações SVG preservam a proposta original. VLibras depende de internet e carrega automaticamente. Seu botão global permite abrir o tradutor em qualquer tela ou tentar novamente após uma falha.
+## Verificação e documentação
 
-## Referências preservadas da primeira etapa
+Foram verificados o fluxo de compra, cálculos, filtros, formulários, favoritos, navegação por teclado, contrastes e abertura/fechamento do VLibras. A conformidade WCAG integral e a experiência com leitores de tela e usuários ainda precisam de avaliação dedicada.
 
-- [Vídeo explicativo](https://youtu.be/6fTX0vEiDGA)
-- [Protótipo no Figma](https://www.figma.com/design/Oe43KaqWU07EfdmDhc6ijN/IHC---HenriqueFVPlech?node-id=1-2)
+- [Registro das verificações e evidências](docs/VERIFICACAO.md)
+- [Roteiro de apresentação](docs/APRESENTACAO.md)
 
-Essas referências não foram usadas como evidência de teste nesta adaptação. Fontes metodológicas estão nos documentos de avaliação e design system.
+**Tecnologias:** HTML5, CSS3, JavaScript e SVG, com arquivos indentados em dois espaços.
+
+**Escopo:** protótipo acadêmico, sem autenticação, cobrança ou entrega reais. Produtos e preços são ilustrativos. Sacola, favoritos e cupom ficam neste navegador; endereço e perfil permanecem apenas na memória da aba.

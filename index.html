@@ -1,651 +1,93 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="pt-BR">
-  <!--
-  MARKETPLACE DE CAMISAS DE TIME EXCLUSIVAS
-  Disciplina: IHC | Professora: Tacyana Batista | Aluno: Henrique F. V. Plech
-  Padrão: WCAG 2.2 Nível AA | Tecnologias: HTML5 + CSS3
--->
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FieldKit &mdash; Marketplace de Camisas de Time Exclusivas</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="O melhor marketplace para comprar camisas de time exclusivas."
+      content="FieldKit: encontre sua próxima camisa de futebol em uma experiência de compra acessível. Protótipo acadêmico de IHC."
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap"
-      rel="stylesheet"
-    />
+    <meta name="theme-color" content="#0b192c" />
+    <title>Início · FieldKit</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="app.js" defer></script>
   </head>
   <body>
-    <!-- WCAG 2.4.1: Skip Navigation -->
-    <a class="skip-link" href="#conteudo-principal"
-      >Pular para o conteúdo principal</a
-    >
-
-    <!-- HEADER -->
-    <header class="site-header" role="banner">
-      <div class="header-inner container">
-        <a href="/" class="logo" aria-label="FieldKit — Página inicial">
-          <svg
-            aria-hidden="true"
-            focusable="false"
-            width="36"
-            height="36"
-            viewBox="0 0 36 36"
-            fill="none"
-          >
-            <circle cx="18" cy="18" r="18" fill="#005fcc" />
-            <path d="M10 14h6v8h-6zM20 10h6v12h-6z" fill="#ffffff" />
-          </svg>
-          <span class="logo-text">FieldKit</span>
-        </a>
-        <nav class="nav-principal" aria-label="Navegação principal">
-          <ul role="list">
-            <li><a href="#categorias" class="nav-link">Categorias</a></li>
-            <li><a href="#catalogo" class="nav-link">Catálogo</a></li>
-            <li><a href="#sobre" class="nav-link">Sobre nós</a></li>
-            <li><a href="#contato" class="nav-link">Contato</a></li>
-          </ul>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <div class="demo-bar">
+      PROJETO DE IHC <span>•</span> Loja demonstrativa. Nenhuma compra ou cobrança real.
+    </div>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="logo" href="#inicio" aria-label="FieldKit — início"
+          ><span class="brand-mark" aria-hidden="true">F<span>↗</span></span
+          >FieldKit<span class="brand-dot">.</span></a
+        >
+        <nav aria-label="Navegação principal">
+          <a href="#inicio" data-nav="inicio">Início</a>
+          <a href="#catalogo" data-nav="catalogo">Catálogo</a>
+          <a href="#favoritos" data-nav="favoritos">Favoritos</a>
+          <a href="#ajuda" data-nav="ajuda">Ajuda e acessibilidade</a>
         </nav>
         <div class="header-actions">
-          <form
-            class="busca-form"
-            role="search"
-            action="#catalogo"
-            method="get"
-          >
-            <label for="campo-busca" class="sr-only">Buscar camisas</label>
-            <input
-              type="search"
-              id="campo-busca"
-              name="q"
-              placeholder="Buscar camisas..."
-              autocomplete="off"
-              aria-label="Buscar camisas no catálogo"
-            />
-            <button type="submit" aria-label="Pesquisar">
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <circle cx="11" cy="11" r="8" />
-                <line x1="21" y1="21" x2="16.65" y2="16.65" />
-              </svg>
-            </button>
-          </form>
-          <a
-            href="#carrinho"
-            class="btn-carrinho"
-            aria-label="Ver carrinho de compras, 3 itens"
-          >
-            <svg
-              aria-hidden="true"
-              focusable="false"
-              width="22"
-              height="22"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
-              <line x1="3" y1="6" x2="21" y2="6" />
-              <path d="M16 10a4 4 0 01-8 0" />
-            </svg>
-            <span class="badge" aria-hidden="true">3</span>
-          </a>
-          <a href="#entrar" class="btn-entrar">
-            <svg
-              aria-hidden="true"
-              focusable="false"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
-              <circle cx="12" cy="7" r="4" />
-            </svg>
-            Entrar
-          </a>
+          <a href="#acesso" id="account-link">Entrar</a>
+          <a class="cart-link" href="#carrinho">Sacola <span id="cart-count">0</span></a>
         </div>
       </div>
     </header>
-
-    <!-- MAIN -->
-    <main id="conteudo-principal" tabindex="-1">
-      <!-- HERO -->
-      <section class="hero" aria-labelledby="hero-titulo">
-        <div class="container hero-inner">
-          <div class="hero-texto">
-            <p class="hero-eyebrow">Coleções oficiais e retrô</p>
-            <h1 id="hero-titulo">Vista as cores do seu time com orgulho</h1>
-            <p class="hero-sub">
-              Camisas oficiais e edições especiais dos maiores clubes do Brasil,
-              com autenticidade garantida e entrega rápida.
-            </p>
-            <div class="hero-ctas">
-              <a href="#catalogo" class="btn btn-primario"
-                >Ver catálogo completo</a
-              >
-              <a href="#categorias" class="btn btn-secundario">Explorar categorias</a>
-            </div>
-            <ul
-              class="hero-badges"
-              role="list"
-              aria-label="Diferenciais da loja"
-            >
-              <li>
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                Produtos 100% originais
-              </li>
-              <li>
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                Frete grátis acima de R$ 199
-              </li>
-              <li>
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                Troca e devolução grátis
-              </li>
-            </ul>
-          </div>
-          <div class="hero-imagem" aria-hidden="true">
-            <svg
-              viewBox="0 0 300 340"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M60 80 L30 130 L70 145 L70 290 L230 290 L230 145 L270 130 L240 80 L200 100 C190 60 110 60 100 100 Z"
-                fill="#005fcc"
-                stroke="#003a80"
-                stroke-width="3"
-              />
-              <path
-                d="M130 60 L130 290 M150 60 L150 290 M170 60 L170 290"
-                stroke="#ffffff"
-                stroke-width="4"
-                opacity="0.15"
-              />
-              <path
-                d="M100 100 C110 120 130 125 150 125 C170 125 190 120 200 100 C190 80 170 75 150 75 C130 75 110 80 100 100 Z"
-                fill="#003a80"
-              />
-              <text
-                x="150"
-                y="215"
-                text-anchor="middle"
-                font-size="72"
-                font-weight="900"
-                fill="white"
-                opacity="0.9"
-                font-family="Inter,sans-serif"
-              >
-                10
-              </text>
-            </svg>
-          </div>
-        </div>
-      </section>
-
-      <!-- BANNER PROMO -->
-      <aside class="banner-promo" aria-label="Promoção em destaque">
-        <div class="container">
-          <p>
-            <strong>&#127942; Promoção de setembro:</strong> Use o cupom
-            <code>FIELDKIT15</code> e ganhe <strong>15% de desconto</strong> em
-            qualquer camisa titular!
-            <a href="#catalogo" class="link-promo">Aproveitar agora &#8594;</a>
-          </p>
-        </div>
-      </aside>
-
-      <!-- CATEGORIAS -->
-      <section
-        id="categorias"
-        class="secao-categorias"
-        aria-labelledby="titulo-categorias"
-      >
-        <div class="container">
-          <p class="section-kicker">Encontre seu estilo</p>
-          <h2 id="titulo-categorias">Explorar por categoria</h2>
-          <p class="secao-descricao">Escolha uma coleção e encontre sua próxima camisa.</p>
-          <ul class="grid-categorias" role="list">
-            <li>
-              <a
-                href="#catalogo"
-                class="card-categoria"
-                aria-label="Filtrar por camisas titulares"
-                ><span class="cat-icone" aria-hidden="true">&#128085;</span
-                ><span class="cat-nome">Titular</span></a
-              >
-            </li>
-            <li>
-              <a
-                href="#catalogo"
-                class="card-categoria"
-                aria-label="Filtrar por camisas reservas"
-                ><span class="cat-icone" aria-hidden="true">&#128085;</span
-                ><span class="cat-nome">Reserva</span></a
-              >
-            </li>
-            <li>
-              <a
-                href="#catalogo"
-                class="card-categoria"
-                aria-label="Filtrar por camisas de goleiro"
-                ><span class="cat-icone" aria-hidden="true">&#127957;</span
-                ><span class="cat-nome">Goleiro</span></a
-              >
-            </li>
-            <li>
-              <a
-                href="#catalogo"
-                class="card-categoria"
-                aria-label="Filtrar por edições especiais"
-                ><span class="cat-icone" aria-hidden="true">&#11088;</span
-                ><span class="cat-nome">Ed. Especial</span></a
-              >
-            </li>
-            <li>
-              <a
-                href="#catalogo"
-                class="card-categoria"
-                aria-label="Filtrar por camisas retrô"
-                ><span class="cat-icone" aria-hidden="true">&#127942;</span
-                ><span class="cat-nome">Retrô</span></a
-              >
-            </li>
-            <li>
-              <a
-                href="#catalogo"
-                class="card-categoria"
-                aria-label="Filtrar por coleção de treino"
-                ><span class="cat-icone" aria-hidden="true">&#127939;</span
-                ><span class="cat-nome">Treino</span></a
-              >
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- CATALOGO -->
-      <section id="catalogo" class="catalogo" aria-labelledby="titulo-catalogo">
-        <div class="container">
-          <header class="catalogo-header">
-            <div>
-              <p class="section-kicker">Curadoria FieldKit</p>
-              <h2 id="titulo-catalogo">Catálogo completo</h2>
-              <p class="secao-descricao">
-                Escolha sua próxima camisa com autenticidade garantida.
-              </p>
-            </div>
-            <span class="resultado-contagem" aria-live="polite">2 produtos encontrados</span>
-          </header>
-
-          <form class="filtros" action="#catalogo" method="get">
-            <div class="filtro-campo">
-              <label for="filtro-time">Time</label>
-              <select id="filtro-time" name="time">
-                <option value="todos">Todos os times</option>
-                <option value="flamengo">Flamengo</option>
-                <option value="corinthians">Corinthians</option>
-                <option value="palmeiras">Palmeiras</option>
-                <option value="vasco">Vasco</option>
-              </select>
-            </div>
-            <div class="filtro-campo">
-              <label for="filtro-categoria">Categoria</label>
-              <select id="filtro-categoria" name="categoria">
-                <option value="todas">Todas as categorias</option>
-                <option value="titular">Titular</option>
-                <option value="retro">Retrô</option>
-                <option value="treino">Treino</option>
-              </select>
-            </div>
-            <div class="filtro-campo">
-              <label for="filtro-ordem">Ordenar por</label>
-              <select id="filtro-ordem" name="ordem">
-                <option value="relevancia">Mais relevantes</option>
-                <option value="menor-preco">Menor preço</option>
-                <option value="maior-preco">Maior preço</option>
-              </select>
-            </div>
-            <button class="btn btn-primario" type="submit">
-              Aplicar filtros
-            </button>
-          </form>
-
-          <ul class="grid-produtos" role="list">
-            <li>
-              <article class="card-produto" aria-labelledby="prod-3-nome">
-                <a
-                  href="#prod-3-nome"
-                  class="card-imagem-link"
-                  aria-label="Ver camisa do Palmeiras"
-                >
-                  <div class="card-imagem">
-                    <svg
-                      viewBox="0 0 200 230"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      role="img"
-                      aria-label="Camisa titular verde do Palmeiras"
-                    >
-                      <path
-                        d="M40 54 L20 88 L47 97 L47 198 L153 198 L153 97 L180 88 L160 54 L133 67 C127 42 73 42 67 67 Z"
-                        fill="#087f5b"
-                        stroke="#064e3b"
-                        stroke-width="3"
-                      />
-                      <path
-                        d="M67 67 C73 80 87 85 100 85 C113 85 127 80 133 67 C127 53 113 50 100 50 C87 50 73 53 67 67 Z"
-                        fill="#064e3b"
-                      />
-                      <circle
-                        cx="100"
-                        cy="145"
-                        r="24"
-                        fill="#ffffff"
-                        opacity=".9"
-                      />
-                      <text
-                        x="100"
-                        y="153"
-                        text-anchor="middle"
-                        font-size="24"
-                        font-weight="900"
-                        fill="#087f5b"
-                        font-family="Inter,sans-serif"
-                      >
-                        P
-                      </text>
-                    </svg>
-                    <span class="badge-novo">Novo</span>
-                  </div>
-                </a>
-                <div class="card-info">
-                  <span class="card-clube">Palmeiras</span>
-                  <h3 id="prod-3-nome" class="card-nome">
-                    <a href="#prod-3-nome"
-                      >Camisa Titular 2024 - Verde Tradicional</a
-                    >
-                  </h3>
-                  <div
-                    class="card-avaliacao"
-                    aria-label="Avaliação: 4.9 de 5 estrelas com 76 avaliações"
-                  >
-                    <span class="estrelas" aria-hidden="true"
-                      >&#9733;&#9733;&#9733;&#9733;&#9733;</span
-                    >
-                    <span class="num-avaliacoes">(76)</span>
-                  </div>
-                  <div class="card-preco-area">
-                    <span class="preco-atual" aria-label="Preço: R$ 319,90"
-                      >R$ 319,90</span
-                    ><span class="preco-parcelas">ou 10x de R$ 31,99</span>
-                  </div>
-                  <div class="card-acoes">
-                    <a href="#prod-3-nome" class="btn btn-primario btn-card"
-                      >Ver detalhes</a
-                    ><button
-                      class="btn-fav"
-                      type="button"
-                      aria-label="Adicionar camisa do Palmeiras aos favoritos"
-                      aria-pressed="false"
-                    >
-                      <span aria-hidden="true">&#9825;</span>
-                    </button>
-                  </div>
-                </div>
-              </article>
-            </li>
-            <li>
-              <article class="card-produto" aria-labelledby="prod-4-nome">
-                <a
-                  href="#prod-4-nome"
-                  class="card-imagem-link"
-                  aria-label="Ver camisa do Vasco"
-                >
-                  <div class="card-imagem">
-                    <svg
-                      viewBox="0 0 200 230"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      role="img"
-                      aria-label="Camisa preta do Vasco com faixa branca"
-                    >
-                      <path
-                        d="M40 54 L20 88 L47 97 L47 198 L153 198 L153 97 L180 88 L160 54 L133 67 C127 42 73 42 67 67 Z"
-                        fill="#171717"
-                        stroke="#050505"
-                        stroke-width="3"
-                      />
-                      <path
-                        d="M42 112 L158 112 L158 136 L42 136Z"
-                        fill="#ffffff"
-                      />
-                      <path
-                        d="M67 67 C73 80 87 85 100 85 C113 85 127 80 133 67 C127 53 113 50 100 50 C87 50 73 53 67 67 Z"
-                        fill="#333333"
-                      />
-                      <text
-                        x="100"
-                        y="130"
-                        text-anchor="middle"
-                        font-size="18"
-                        font-weight="900"
-                        fill="#171717"
-                        font-family="Inter,sans-serif"
-                      >
-                        VASCO
-                      </text>
-                    </svg>
-                  </div>
-                </a>
-                <div class="card-info">
-                  <span class="card-clube">Vasco</span>
-                  <h3 id="prod-4-nome" class="card-nome">
-                    <a href="#prod-4-nome"
-                      >Camisa Retrô 1998 — Faixa Clássica</a
-                    >
-                  </h3>
-                  <div
-                    class="card-avaliacao"
-                    aria-label="Avaliação: 4.6 de 5 estrelas com 54 avaliações"
-                  >
-                    <span class="estrelas" aria-hidden="true"
-                      >&#9733;&#9733;&#9733;&#9733;&#9733;</span
-                    >
-                    <span class="num-avaliacoes">(54)</span>
-                  </div>
-                  <div class="card-preco-area">
-                    <span class="preco-atual" aria-label="Preço: R$ 249,90"
-                      >R$ 249,90</span
-                    ><span class="preco-parcelas">ou 10x de R$ 24,99</span>
-                  </div>
-                  <div class="card-acoes">
-                    <a href="#prod-4-nome" class="btn btn-primario btn-card"
-                      >Ver detalhes</a
-                    ><button
-                      class="btn-fav"
-                      type="button"
-                      aria-label="Adicionar camisa do Vasco aos favoritos"
-                      aria-pressed="false"
-                    >
-                      <span aria-hidden="true">&#9825;</span>
-                    </button>
-                  </div>
-                </div>
-              </article>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- SOBRE -->
-      <section id="sobre" class="sobre" aria-labelledby="titulo-sobre">
-        <div class="container sobre-inner">
-          <div>
-            <p class="section-kicker">Nossa paixão</p>
-            <h2 id="titulo-sobre">Feito para quem vive futebol</h2>
-          </div>
-          <p>
-            Na FieldKit, cada camisa conta uma história. Selecionamos produtos
-            oficiais e edições especiais para você vestir sua identidade com
-            segurança, acessibilidade e entrega transparente.
-          </p>
-        </div>
-      </section>
-
-      <!-- PESQUISA -->
-      <section class="pesquisa" aria-labelledby="titulo-pesquisa">
-        <div class="container pesquisa-inner">
-          <div>
-            <p class="section-kicker">Sua opinião importa</p>
-            <h2 id="titulo-pesquisa">Ajude a melhorar a FieldKit</h2>
-            <p>
-              Compartilhe sua experiência respondendo à pesquisa utilizada neste
-              projeto.
-            </p>
-          </div>
-          <a
-            class="btn btn-primario"
-            href="https://forms.gle/zCLgd4Cwd1sWKZ9x8"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Responder à pesquisa em uma nova aba"
-            >Responder pesquisa</a
-          >
-        </div>
-      </section>
-    </main>
-
-    <!-- FOOTER -->
-    <footer id="contato" class="site-footer" aria-labelledby="titulo-rodape">
-      <h2 id="titulo-rodape" class="sr-only">
-        Rodapé e informações de contato
-      </h2>
-      <div class="container footer-inner">
+    <div class="accessibility-bar" aria-label="Recursos de acessibilidade" role="region">
+      <div class="container accessibility-inner">
+        <p>Navegue com Tab e Shift + Tab. Use Enter para abrir links.</p>
+        <button
+          id="libras-button"
+          class="btn secondary"
+          type="button"
+          data-action="libras"
+          aria-describedby="libras-status"
+        >
+          Carregar VLibras
+        </button>
+        <p id="libras-status" class="hint" role="status" aria-live="polite" aria-atomic="true"></p>
+      </div>
+    </div>
+    <div
+      id="status"
+      class="notice container"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+    ></div>
+    <main id="conteudo" class="container" tabindex="-1"></main>
+    <footer>
+      <div class="container footer-grid">
         <div>
-          <h3>FieldKit</h3>
+          <a class="logo" href="#inicio">FieldKit<span class="brand-dot">.</span></a>
+          <p>Seu time. Sua história. Sua camisa.</p>
           <p>
-            Camisas autênticas para torcedores que carregam seu time por onde
-            vão.
+            Projeto acadêmico de Interação Humano-Computador.<br />Henrique F. V. Plech · Prof.ª
+            Tacyana Batista
           </p>
         </div>
         <div>
-          <h3>Redes sociais</h3>
-          <ul class="footer-links" role="list">
-            <li>
-              <a
-                href="https://github.com/henriqueplech"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub de Henrique Plech, abre em uma nova aba"
-                >GitHub — henriqueplech</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://www.linkedin.com/in/henrique-ferrario-plech/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn de Henrique Ferrario Plech, abre em uma nova aba"
-                >LinkedIn — Henrique Ferrario Plech</a
-              >
-            </li>
-          </ul>
+          <h2>Explore</h2>
+          <a href="#catalogo">Todas as camisas</a><a href="#favoritos">Seus favoritos</a
+          ><a href="#ajuda">Ajuda e acessibilidade</a>
+        </div>
+        <div>
+          <h2>Sobre o protótipo</h2>
+          <p>Produtos, preços e pedidos ilustrativos.<br />Dados ficam apenas neste navegador.</p>
+          <a href="docs/AVALIACAO-IHC.md">Avaliação e matriz de iteração</a
+          ><a href="docs/DESIGN-SYSTEM.md">Mini design system</a>
         </div>
       </div>
-      <div class="footer-base">
-        <div class="container"><p>&copy; 2026 FieldKit.</p></div>
+      <div class="container footer-base">
+        FieldKit © 2026 <span>Feito para aproximar torcedores.</span>
       </div>
     </footer>
-
-    <script>
-      document.querySelectorAll(".btn-fav").forEach((button) => {
-        button.addEventListener("click", () => {
-          const favorito = button.getAttribute("aria-pressed") === "true";
-          const nomeProduto = button
-            .closest(".card-produto")
-            .querySelector(".card-nome")
-            .textContent.trim()
-            .replace(/\s+/g, " ");
-
-          button.setAttribute("aria-pressed", String(!favorito));
-          button.setAttribute(
-            "aria-label",
-            favorito
-              ? `Adicionar ${nomeProduto} aos favoritos`
-              : `Remover ${nomeProduto} dos favoritos`,
-          );
-          button.querySelector("[aria-hidden='true']").textContent = favorito
-            ? "♡"
-            : "♥";
-        });
-      });
-    </script>
-
-    <!-- VLibras Widget oficial: https://github.com/spbgovbr-vlibras/vlibras-web-browsers -->
-    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <noscript
+      ><p class="container notice">
+        Ative o JavaScript para explorar as telas interativas deste protótipo.
+      </p></noscript
+    >
   </body>
 </html>
